@@ -2,24 +2,22 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches: [ main ]   # change to "master" if needed
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
-          distribution: temurin
           java-version: '17'
-          cache: maven
+          distribution: 'temurin'
+          cache: 'maven'
 
-      - name: Build with Maven
-        run: mvn -B package --file pom.xml
+      - name: Build project
+        run: mvn -B package
