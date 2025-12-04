@@ -2,7 +2,7 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ main ]   # change to "master" if needed
+    branches: [ main ]  # or master if your repo uses master
 
 jobs:
   build:
@@ -12,12 +12,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up JDK
+      - name: Set up Java
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: 'maven'
+          cache: maven
 
-      - name: Build project
-        run: mvn -B package
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
